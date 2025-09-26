@@ -1,4 +1,4 @@
-package fa.dfa;
+package fa;
 
 public abstract class State {
 	/**

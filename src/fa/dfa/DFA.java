@@ -1,17 +1,15 @@
 package fa.dfa;
 
+import fa.State;
 import java.util.*;
 
-import fa.FAInterface;
-import fa.State;
-
-public class DFA<DFAState> implements DFAInterface {
+public class DFA implements DFAInterface {
     
     private Set<Character> sigma;
     private Set<DFAState> states;
-    private State startState;
+    private DFAState startState;
     private Set<DFAState> finalStates;
-    private Map<String, State> stateMap;
+    private Map<String, DFAState> stateMap;
     private List<String> stateOrder; // To maintain insertion order for toString
     private List<Character> sigmaOrder; // To maintain insertion order for toString
     
@@ -31,7 +29,7 @@ public class DFA<DFAState> implements DFAInterface {
             return false;
         }
         
-        DFAState state = new DFAState(name);
+        DFAState state = new DFAState(name);  // This is line 34 - the error line
         states.add(state);
         stateMap.put(name, state);
         stateOrder.add(name);
@@ -45,7 +43,7 @@ public class DFA<DFAState> implements DFAInterface {
             return false;
         }
         
-        ((FAInterface) state).setFinal(true);
+        state.setFinal(true);
         finalStates.add(state);
         return true;
     }
@@ -133,10 +131,8 @@ public class DFA<DFAState> implements DFAInterface {
         return true;
     }
     
-    @SuppressWarnings("rawtypes")
     @Override
     public DFA swap(char symb1, char symb2) {
-        @SuppressWarnings("rawtypes")
         DFA newDFA = new DFA();
         
         // Copy sigma with swapped symbols
