@@ -3,6 +3,7 @@ package fa.dfa;
 import java.util.*;
 
 import fa.FAInterface;
+import fa.State;
 
 public class DFA<DFAState> implements DFAInterface {
     
@@ -30,7 +31,7 @@ public class DFA<DFAState> implements DFAInterface {
             return false;
         }
         
-        State state = new DFAState(name);
+        DFAState state = new DFAState(name);
         states.add(state);
         stateMap.put(name, state);
         stateOrder.add(name);
@@ -132,8 +133,10 @@ public class DFA<DFAState> implements DFAInterface {
         return true;
     }
     
+    @SuppressWarnings("rawtypes")
     @Override
     public DFA swap(char symb1, char symb2) {
+        @SuppressWarnings("rawtypes")
         DFA newDFA = new DFA();
         
         // Copy sigma with swapped symbols

@@ -3,5 +3,13 @@
     "java.project.outputPath": "bin",
     "java.project.referencedLibraries": [
         "lib/**/*.jar"
-    ]
+    ],
+    "java.test.config": {
+        "name": "myConfiguration",
+        "workingDirectory": "${workspaceFolder}",
+        "args": [],
+        "vmArgs": [],
+        "env": {},
+        "preLaunchTask": ""
+    }
 }
